@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, jsonify
 import joblib
 from prediction import predict_load_shedding
@@ -23,5 +24,6 @@ def predict():
     
     return jsonify({'predicted_stage': int(prediction[0])})
 
-if __name__ == '__main__':
-    app.run()
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
